@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+
+<form th:action="@{/api/customers/{id}(id=${customer.getId()})}" th:object="${customer}" th:method="PATCH">
+
+    <input type="text" th:field="*{fullName}" name="fullName" placeholder="Full name"><br>
+    <div style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</div>
+
+    <input type="text" th:field="*{email}" name="email" placeholder="email"><br>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+
+    <input type="text" th:field="*{phone}" name="phone" placeholder="+XXXXXXXXXXX"><br>
+    <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Email Error</div>
+
+    <button type="submit">Update</button>
+</form>
+<form th:action="@{/api/customers/{id}(id=${customer.getId()})}" th:method="DELETE">
+    <button type="submit">Delete</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<body>
+<form th:action="@{/api/customers/}" th:object="${customer}" method="post">
+    <input type="text" th:field="*{fullName}" name="fullName" placeholder="Full name"><br>
+    <div style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</div>
+    <input type="text" th:field="*{email}" name="email" placeholder="email"><br>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+    <input type="text" th:field="*{phone}" name="phone" placeholder="+XXXXXXXXXXX"><br>
+    <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Email Error</div>
+    <button type="submit">Додати</button>
+</form>
+<div th:each="person : ${customers}">
+    <a th:href="@{/api/customers/{id}(id=${person.id})}"
+       th:text="${person.getId()} + ' ' + ${person.getFullName()} + ' ' + ${person.getEmail()} +' '+ ${person.phone}"/>
+</div>
+</body>
+</html>
