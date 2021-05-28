@@ -26,6 +26,9 @@ public class Customer {
     private String phone;
     private boolean isActive;
 
+    public Customer() {
+    }
+
     public int getId() {
         return id;
     }

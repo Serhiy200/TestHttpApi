@@ -25,7 +25,7 @@ public class CustomerController {
     @GetMapping("/customers")
     public String index(Model model, Customer customer) {
 
-        //get list of customers from v
+        //get list of customers from Database
         model.addAttribute("customers", customerDAO.getAllCustomers());
 
         return "main";
